@@ -23,7 +23,6 @@ const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const background = location.state?.background;
 
   useEffect(() => {
@@ -38,6 +37,8 @@ const App = () => {
       <Routes location={background || location}>
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
+        <Route path='/feed/:number' element={<OrderInfo />} />
+        <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route
           path='/login'
           element={
@@ -97,8 +98,8 @@ const App = () => {
             path='/feed/:number'
             element={
               <Modal
-                title={`Заказ №${location.pathname.split('/')[2]}`}
-                onClose={() => navigate('/feed')}
+                title={`#${location.pathname.split('/')[2]}`}
+                onClose={() => navigate(-1)}
               >
                 <OrderInfo />
               </Modal>
@@ -107,7 +108,7 @@ const App = () => {
           <Route
             path='/profile/orders/:number'
             element={
-              <Modal title='' onClose={() => navigate('/profile/orders')}>
+              <Modal title='Информация о заказе' onClose={() => navigate(-1)}>
                 <OrderInfo />
               </Modal>
             }
@@ -115,7 +116,7 @@ const App = () => {
           <Route
             path='/ingredients/:id'
             element={
-              <Modal title='Описание' onClose={() => navigate('/')}>
+              <Modal title='Детали ингредиента' onClose={() => navigate(-1)}>
                 <IngredientDetails />
               </Modal>
             }
