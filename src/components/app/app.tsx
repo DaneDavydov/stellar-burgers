@@ -37,8 +37,30 @@ const App = () => {
       <Routes location={background || location}>
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
-        <Route path='/feed/:number' element={<OrderInfo />} />
-        <Route path='/ingredients/:id' element={<IngredientDetails />} />
+        <Route
+          path='/feed/:number'
+          element={
+            <div className={styles.detailPageWrap}>
+              <p
+                className={`text text_type_digits-default ${styles.detailHeader}`}
+              >
+                {`#${location.pathname.split('/')[2]}`}
+              </p>
+              <OrderInfo />
+            </div>
+          }
+        />
+        <Route
+          path='/ingredients/:id'
+          element={
+            <div className={styles.detailPageWrap}>
+              <p className={`text text_type_main-large ${styles.detailHeader}`}>
+                Детали ингредиента
+              </p>
+              <IngredientDetails />
+            </div>
+          }
+        />
         <Route
           path='/login'
           element={

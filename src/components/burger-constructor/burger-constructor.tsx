@@ -43,7 +43,11 @@ export const BurgerConstructor: FC = () => {
     );
 
     dispatch(
-      sendOrderBurger([...ingredientsIds, constructorItems.bun._id])
+      sendOrderBurger([
+        ...ingredientsIds,
+        constructorItems.bun._id,
+        constructorItems.bun._id
+      ])
     ).then(() => {
       dispatch(resetConstructor());
     });
