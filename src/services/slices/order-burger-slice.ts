@@ -9,7 +9,7 @@ type TInitialState = {
   isLoading: boolean;
 };
 
-const initialState: TInitialState = {
+export const orderBurgerInitialState: TInitialState = {
   order: null,
   ingredients: [],
   isLoading: false
@@ -22,10 +22,13 @@ export const sendOrderBurger = createAsyncThunk(
 
 const orderBurgerSlice = createSlice({
   name: 'orderBurger',
-  initialState,
+  initialState: orderBurgerInitialState,
   reducers: {
     resetOrder: (state) => {
       state.order = null;
+    },
+    resetIngredients: (state) => {
+      state.ingredients = [];
     }
   },
   selectors: {
@@ -56,4 +59,4 @@ export const {
   orderBurgerIngredientsSelector,
   orderBurgerIsLoadingSelector
 } = orderBurgerSlice.selectors;
-export const { resetOrder } = orderBurgerSlice.actions;
+export const { resetOrder, resetIngredients } = orderBurgerSlice.actions;
