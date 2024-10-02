@@ -6,7 +6,7 @@ type TInitialState = {
   ingredients: TConstructorIngredient[];
 };
 
-const initialState: TInitialState = {
+export const constructorInitialState: TInitialState = {
   bun: null,
   ingredients: []
 };
@@ -30,7 +30,7 @@ const moveIngredient = (
 
 const constructorSlice = createSlice({
   name: 'ingredientsConstructor',
-  initialState,
+  initialState: constructorInitialState,
   selectors: {
     bunSelector: (state) => state.bun,
     ingredientsSelector: (state) => state.ingredients

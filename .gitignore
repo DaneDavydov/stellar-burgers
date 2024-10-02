@@ -2,3 +2,7 @@ node_modules
 .env
 .idea
 dist
+.yarn
+.vscode
+*.log
+coverage
